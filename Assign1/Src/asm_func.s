@@ -17,8 +17,8 @@
 @ CG/[T]EE2028 Assignment 1, Sem 2, AY 2024/25
 @ (c) ECE NUS, 2025
 
-@ Write Student 1’s Name here:
-@ Write Student 2’s Name here:
+@ Write Student 1’s Name here: Zhang Yijian
+@ Write Student 2’s Name here: Leong Deng Jun
 
 @ Look-up table for registers:
 

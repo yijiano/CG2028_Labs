@@ -24,3 +24,1197 @@ Finished building: default.size.stdout
  
 Finished building: Assign1.list
  
+23:23:17 **** Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/reference.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/reference.d" -MT"Src/reference.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/reference.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:31: Error: junk at end of line, first unrecognized character is `r'
+../Src/asm_func.s:32: Error: bad instruction `return value from asm back to C program,R0 register is used'
+../Src/asm_func.s:34: Error: bad instruction `r4 serving as loop counter i'
+../Src/asm_func.s:35: Error: bad instruction `r5 holding loop limit,which is 5(#of entering events)'
+../Src/asm_func.s:38: Error: bad instruction `compare i with 5'
+../Src/asm_func.s:39: Error: bad instruction `if i>=5,exit loop'
+../Src/asm_func.s:42: Error: bad instruction `i++'
+../Src/asm_func.s:43: Error: bad instruction `jump back to start of the loop'
+../Src/asm_func.s:47: Error: bad instruction `end'
+make: *** [Src/subdir.mk:32: Src/asm_func.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:24:19 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/reference.o: in function `main':
+C:/Users/djleong01/Desktop/Uni/Y3S2/CG2028/CG2028_Labs/Assign1/Debug/../Src/reference.c:7: multiple definition of `main'; ./Src/main.o:C:/Users/djleong01/Desktop/Uni/Y3S2/CG2028/CG2028_Labs/Assign1/Debug/../Src/main.c:31: first defined here
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Assign1.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:25:22 **** Clean-only build of configuration Debug for project Assign1 ****
+make -j16 clean 
+rm -rf ./Startup/startup_stm32l475vgtx.d ./Startup/startup_stm32l475vgtx.o
+rm -rf ./Src/asm_func.d ./Src/asm_func.o ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/reference.cyclo ./Src/reference.d ./Src/reference.o ./Src/reference.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf Assign1.elf Assign1.list Assign1.map default.size.stdout
+ 
+23:25:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32l475vgtx.d" -MT"Startup/startup_stm32l475vgtx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Startup/startup_stm32l475vgtx.o" "../Startup/startup_stm32l475vgtx.s"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:30:31 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+12:53:13 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:34: Error: bad instruction `load value of result[0][0],which is F'
+../Src/asm_func.s:35: Error: bad instruction `load value of result[0][1],which is S'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+12:53:31 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+12:58:05 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+12:59:49 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+12:59:51 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:12:09 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:12:18 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:18:23 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:44: Error: bad instruction `r4 serving as loop counter i'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:18:34 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:18:38 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:19:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16656	    472	   2072	  19200	   4b00	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:45:41 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/asm_func.o: in function `FIRST_FOR_LOOP':
+C:/Users/djleong01/Desktop/Uni/Y3S2/CG2028/CG2028_Labs/Assign1/Debug/../Src/asm_func.s:49: undefined reference to `LOOP_EXIT'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Assign1.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:45:55 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:60: Error: bad instruction `end'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:46:17 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:46:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:50:06 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:55: Error: junk at end of line, first unrecognized character is `/'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:50:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:50:29 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:51:14 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:51:16 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:52:02 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:52:07 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:52:47 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:52:49 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+13:53:56 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+13:53:58 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16672	    472	   2072	  19216	   4b10	Assign1.elf
+Finished building: default.size.stdout
+ 
+15:09:20 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16704	    472	   2072	  19248	   4b30	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+17:10:45 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:83: Error: bad expression -- `sub R10,=SECTION_MAX,'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:22:11 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:86: Error: bad expression -- `sub R10,=SECTION_MAX,R12'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:22:17 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:86: Error: constant expression expected -- `sub R10,SECTION_MAX,R12'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:23:38 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:86: Error: constant expression expected -- `sub R10,#SECTION_MAX,R12'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:27:16 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:86: Error: constant expression expected -- `sub R10,#(SECTION_MAX),R12'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:27:45 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:46: Error: expected comma after "SECTION_MAX"
+../Src/asm_func.s:86: Error: constant expression expected -- `sub R10,#(SECTION_MAX),R12'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:30:17 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16736	    472	   2072	  19280	   4b50	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+22:07:10 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16736	    472	   2072	  19280	   4b50	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:07:17 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:90: Error: bad instruction `bg AVAIL_POS'
+../Src/asm_func.s:97: Error: cannot use register index with PC-relative addressing -- `str R12,#SECTION_MAX'
+../Src/asm_func.s:102: Error: bad instruction `comp R8,R11'
+../Src/asm_func.s:104: Error: cannot use register index with PC-relative addressing -- `str R8,#0'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:08:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:90: Error: bad instruction `bg AVAIL_POS'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:09:18 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:97: Error: cannot represent T32_OFFSET_IMM relocation in this object file format
+../Src/asm_func.s:104: Error: cannot represent T32_OFFSET_IMM relocation in this object file format
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:14:43 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:97: Error: cannot use register index with PC-relative addressing -- `str R12,#SECTION_MAX'
+../Src/asm_func.s:104: Error: cannot use register index with PC-relative addressing -- `str R8,#0'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:17:41 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:97: Error: invalid pseudo operation -- `str R12,=SECTION_MAX'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:17:50 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/asm_func.o: in function `AVAIL_POS':
+C:/Users/djleong01/Desktop/Uni/Y3S2/CG2028/CG2028_Labs/Assign1/Debug/../Src/asm_func.s:95: undefined reference to `MORE_AVAIL'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Assign1.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:28:07 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16784	    472	   2072	  19328	   4b80	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:30:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16784	    472	   2072	  19328	   4b80	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:30:30 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16784	    472	   2072	  19328	   4b80	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:43:10 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16784	    472	   2072	  19328	   4b80	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:43:14 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16784	    472	   2072	  19328	   4b80	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:56:24 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:56:36 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:10:29 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:10:33 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+16:29:55 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+../Src/asm_func.s: Assembler messages:
+../Src/asm_func.s:103: Error: bad expression -- `ldr R12,{R6}'
+../Src/asm_func.s:116: Error: bad expression -- `ldr R12,{R6}'
+make: *** [Src/subdir.mk:29: Src/asm_func.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+16:30:27 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+16:30:32 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+16:39:12 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+16:39:16 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+16:44:19 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+16:48:16 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+16:48:19 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+17:12:18 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+17:12:22 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+17:24:56 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+17:32:58 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+17:42:03 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+17:42:06 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:12:30 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:12:33 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:26:30 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:26:32 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:38:47 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:38:49 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:39:13 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:39:49 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16816	    472	   2072	  19360	   4ba0	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:55:12 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:55:15 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:55:17 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:56:06 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+23:57:49 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+23:57:52 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+00:03:42 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:03:46 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+00:09:04 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:09:07 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+00:24:02 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:24:05 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:27:01 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:27:03 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:29:35 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:29:37 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:30:00 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+00:31:46 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Src/asm_func.d" -MT"Src/asm_func.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/asm_func.o" "../Src/asm_func.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:33:41 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16776	    472	   2072	  19320	   4b78	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:33:43 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16776	    472	   2072	  19320	   4b78	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:33:54 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16776	    472	   2072	  19320	   4b78	Assign1.elf
+Finished building: default.size.stdout
+ 
+00:35:10 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32L4 -DSTM32 -DDEBUG -DSTM32L475VGTx -c -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Assign1.elf" @"objects.list"  -lrdimon -mcpu=cortex-m4 -T"C:\Users\djleong01\Desktop\Uni\Y3S2\CG2028\CG2028_Labs\Assign1\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assign1.map" -Wl,--gc-sections -static -specs=rdimon.specs -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-signalr.o): in function `_kill_r':
+(.text._kill_r+0xe): warning: _kill is not implemented and will always fail
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Assign1.elf has a LOAD segment with RWX permissions
+Finished building target: Assign1.elf
+ 
+arm-none-eabi-size  Assign1.elf 
+arm-none-eabi-objdump -h -S Assign1.elf  > "Assign1.list"
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Assign1.list
+ 
+00:35:14 **** Incremental Build of configuration Debug for project Assign1 ****
+make -j16 all 
+arm-none-eabi-size  Assign1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16800	    472	   2072	  19344	   4b90	Assign1.elf
+Finished building: default.size.stdout
+ 

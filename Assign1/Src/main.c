@@ -32,8 +32,8 @@ int main(void)
 	initialise_monitor_handles();
 
 	int i,j;
-	int building[F][S] = {{8,8},{8,8},{8,8}};
-	int entry[5] = {1,2,3,4,5};
+	int building[F][S] = {{9,10},{7,8},{4,4}};
+	int entry[5] =  {2,4,6,8,10};
 	int exit[F][S] = {{1,2},{2,3},{3,4}};
 	int result[F][S] = {{F,S},{0,0},{0,0}};
 

@@ -1,5 +1,4 @@
 "./Src/asm_func.o"
 "./Src/main.o"
-"./Src/reference_2.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32l475vgtx.o"

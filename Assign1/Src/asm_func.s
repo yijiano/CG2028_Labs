@@ -54,8 +54,8 @@ asm_func:
 COPY_LOOP:
 	CMP R5, R4
     BGE COPY_LOOP_DONE
-    LDR R6, [R0, R10, LSL #2]   	// load building[i] using building pointer in R0
-    STR R6, [R3, R10, LSL #2]   	// store it to result[i]
+    LDR R6, [R0, R5, LSL #2]   	// load building[i] using building pointer in R0
+    STR R6, [R3, R5, LSL #2]   	// store it to result[i]
     ADD R5, R5, #1
     B COPY_LOOP
 
@@ -68,7 +68,7 @@ ENTRY_FOR_LOOP:
 	CMP R0, #5						// compare j with 5
 	BGE ENTRY_FOR_LOOP_DONE			// if i>=5, exit loop
 
-	LDR	R8, [R1, R5, LSL #2] 		// cars = entry[i]
+	LDR	R8, [R1, R0, LSL #2] 		// cars = entry[j]
 
 // Check each section to accomodate new cars from current entry index
 ENTRY_WHILE_LOOP:
@@ -76,10 +76,10 @@ ENTRY_WHILE_LOOP:
 	CMP R8, #0
 	BEQ ENTRY_WHILE_LOOP_DONE		// if cars == 0 then exit
 	CMP R5, R4
-	BGE ENTRY_WHILE_LOOP_DONE		// if j >= F*S then exit
+	BGE ENTRY_WHILE_LOOP_DONE		// if k >= F*S then exit
 
 	LDR R6, [R3, R5, LSL #2]		// load result[k]
-	LDR R9, #SECTION_MAX			// load SECTION_MAX
+	MOV R9, #SECTION_MAX			// load SECTION_MAX
 	SUB R9, R9, R6					// current section capacity = SECTION_MAX - result[k]
 
 	// Current section is full; move to next
@@ -107,7 +107,7 @@ FILL_SECTION:
 
 ENTRY_WHILE_LOOP_DONE:
 	ADD R0, R0, #1					// j++
-	B FIRST_FOR_LOOP				// next entry event
+	B ENTRY_FOR_LOOP				// next entry event
 
 ENTRY_FOR_LOOP_DONE:
 	MOV R0, #0

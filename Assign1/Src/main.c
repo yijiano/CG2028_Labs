@@ -27,20 +27,23 @@
 extern void asm_func(int* arg1, int* arg2, int* arg3, int* arg4);
 extern void initialise_monitor_handles(void);
 
+
+
 int main(void)
 {
 	initialise_monitor_handles();
 
 	int i,j;
-	int building[F][S] = {{9,10},{7,8},{4,4}};
-	int entry[5] =  {2,4,6,8,10};
+
+
+	int building[F][S] = {{8,8},{8,8},{8,8}};
+	int entry[5] =  {1,2,3,4,5};
 	int exit[F][S] = {{1,2},{2,3},{3,4}};
 	int result[F][S] = {{F,S},{0,0},{0,0}};
 
 	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
 
-	// print result[][]
-	printf("RESULT\n");
+	printf("TEST CASE 1\n");
 	for (i=0; i<F; i++)
 	{
 		for (j=0; j<S; j++)
@@ -51,4 +54,93 @@ int main(void)
 	printf("\n");
 	}
 
+//	int building[F][S] = {{1,2},{3,4},{5,6}};
+//	int entry[5] =  {1,1,1,1,1};
+//	int exit[F][S] = {{1,0},{0,0},{0,0}};
+//	int result[F][S] = {{F,S},{0,0},{0,0}};
+//
+//	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
+//
+//	printf("TEST CASE 2\n");
+//	for (i=0; i<F; i++)
+//	{
+//		for (j=0; j<S; j++)
+//		{
+//			building[i][j] = result[i][j];
+//			printf("%d\t", building[i][j]);
+//		}
+//	printf("\n");
+//	}
+
+//	int building[F][S] = {{12,12},{10,5},{3,7}};
+//	int entry[5] =  {1,1,1,1,5};
+//	int exit[F][S] = {{1,2},{3,4},{3,6}};
+//	int result[F][S] = {{F,S},{0,0},{0,0}};
+//
+//	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
+//
+//	printf("TEST CASE 3\n");
+//	for (i=0; i<F; i++)
+//	{
+//		for (j=0; j<S; j++)
+//		{
+//			building[i][j] = result[i][j];
+//			printf("%d\t", building[i][j]);
+//		}
+//	printf("\n");
+//	}
+//
+//	int building[F][S] = {{12,12},{12,12},{12,12}};
+//	int entry[5] =  {0,0,0,0,0};
+//	int exit[F][S] = {{2,2},{3,3},{4,4}};
+//	int result[F][S] = {{F,S},{0,0},{0,0}};
+//
+//	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
+//
+//	printf("TEST CASE 4\n");
+//	for (i=0; i<F; i++)
+//	{
+//		for (j=0; j<S; j++)
+//		{
+//			building[i][j] = result[i][j];
+//			printf("%d\t", building[i][j]);
+//		}
+//	printf("\n");
+//	}
+//
+//	int building[F][S] = {{9,10},{7,8},{4,4}};
+//	int entry[5] =  {2,4,6,8,10};
+//	int exit[F][S] = {{1,1},{1,1},{1,1}};
+//	int result[F][S] = {{F,S},{0,0},{0,0}};
+//
+//	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
+//
+//	printf("TEST CASE 5\n");
+//	for (i=0; i<F; i++)
+//	{
+//		for (j=0; j<S; j++)
+//		{
+//			building[i][j] = result[i][j];
+//			printf("%d\t", building[i][j]);
+//		}
+//	printf("\n");
+//	}
+//
+//	int building[F+1][S+1] = {{8,8,8},{8,8,8},{8,8,8},{8,8,8}};
+//	int entry[5] =  {1,2,3,4,5};
+//	int exit[F+1][S+1] = {{1,2,3},{1,2,3},{1,2,3},{1,2,3}};
+//	int result[F+1][S+1] = {{F+1,S+1,0},{0,0,0},{0,0,0},{0,0,0}};
+//
+//	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
+//
+//	printf("TEST CASE 6?\n");
+//	for (i=0; i<F+1; i++)
+//	{
+//		for (j=0; j<S+1; j++)
+//		{
+//			building[i][j] = result[i][j];
+//			printf("%d\t", building[i][j]);
+//		}
+//	printf("\n");
+//	}
 }

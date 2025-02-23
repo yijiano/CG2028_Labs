@@ -22,21 +22,17 @@
 
 @ Look-up table for registers:
 
-@ R0 ptr to first element in 2D array for building slots
+@ R0 ptr to first element in 2D array for building slots / entry event index j / exit event index l
 @ R1 ptr to array for entry events
 @ R2 ptr to array for exit events
 @ R3 ptr 2D array for results
 @ R4 # of elements (F*S)
-@ R5 for-loop counter i
-@ R6 flexi reg
-@ R7 floor - curr floor pointer
-@ R8 section - curr section pointer
-@ R9 cars - # of cars at each entry event
-@ R10 available - # of available slots
-@ R11 flexi reg
-@ R12 parking[floor][sect]
-@ R13 stack ptr
-@ R14 link register
+@ R5 copy loop index i / section index k
+@ R6 flexi-register
+@ R8 # of cars in entry[section] during EXIT_FOR_LOOP
+@ R9 current section capacity / remaining cars during exit event
+@ R13 stack pointer (SP)
+@ R14 link register (LR)
 @ ...
 
 @ Offset = ((i * S) + j) *4
@@ -46,83 +42,95 @@
 .equ SECTION_MAX, 12
 // return value from asm back to C program, R0 register is used
 asm_func:
-	LDR R4, [R3]		// Load value of result[0][0], which is F
-	LDR R5, [R3, #4]	// Load value of result[0][1], which is S
-	PUSH {R4}			// push F(R4) to the stack
-	MUL R4, R4, R5		// Multiply to get # of elements in the array
+	PUSH {LR}
 
-	PUSH {R5}			// push S(R5) to the stack
+	// Calculate F*S
+	LDR R4, [R3]					// Load value of result[0][0], which is F
+	LDR R5, [R3, #4]				// Load value of result[0][1], which is S
+	MUL R4, R4, R5					// Multiply to get # of elements in the array (F*S)
+	MOV	R5, #0						// R5 serving as copy loop counter i, init to 0
 
-	MOV	R5, #0			// R5 serving as loop counter i, init to 0
-	MOV R7, #0			// init R7 (floor) to 0
-	MOV R8, #0			// init R8 (section) to 0
+// Copy the building array to results array (initial state of building)
+COPY_LOOP:
+	CMP R5, R4
+    BGE COPY_LOOP_DONE
+    LDR R6, [R0, R10, LSL #2]   	// load building[i] using building pointer in R0
+    STR R6, [R3, R10, LSL #2]   	// store it to result[i]
+    ADD R5, R5, #1
+    B COPY_LOOP
 
-FIRST_FOR_LOOP:
-	CMP R5, #5			// compare i with 5
-	BGE FIRST_LOOP_EXIT	// if i>=5, exit loop
+COPY_LOOP_DONE:
+    MOV R0, #0              		// repurpose R0 to entry event index (0 to 4)
+    MOV R5, #0              		// repurpose R5 to section index (for result array)
 
-	LDR	R9, [R1, R5, LSL #2] // load entry element from R1 address + (i*4) into R7
+// Process each entry index
+ENTRY_FOR_LOOP:
+	CMP R0, #5						// compare j with 5
+	BGE ENTRY_FOR_LOOP_DONE			// if i>=5, exit loop
 
-WHILE_LOOP:
-	CMP R9, #0			// compare #cars remaining for that event >0
-	BLE WHILE_LOOP_EXIT	// if cars <= 0, branch back to the main for-loop
+	LDR	R8, [R1, R5, LSL #2] 		// cars = entry[i]
 
-	POP {R6}			// POP S to R6
-	POP {R11}			// POP F to R11
-	CMP R7, R11			// compare floors to confirm there are available floors
-	PUSH {R11}			// push F back to the stack
-	PUSH {R6}			// push S back after F
-	BGE WHILE_LOOP_EXIT	// if floors >= 0, branch back to the main for-loop
+// Check each section to accomodate new cars from current entry index
+ENTRY_WHILE_LOOP:
+	// check (cars && j < F*S) condition
+	CMP R8, #0
+	BEQ ENTRY_WHILE_LOOP_DONE		// if cars == 0 then exit
+	CMP R5, R4
+	BGE ENTRY_WHILE_LOOP_DONE		// if j >= F*S then exit
 
-	// operations to access 2D array
-	POP {R12}			// pop stack to get S
-	MUL	R11, R7, R12	// R11 = floor * S (i * s)
-	ADD R11, R11, R8	// R11 = (floor * s) + j
-	LSL R11, R11, #2	// R11 = (floor * s) + j * 4
-	ADD R11, R0, R11	// R11 = address of parking[floor][sect]
-	PUSH {R12}			// push S back to the stack
-	LDR	R12, [R11]		// store value into R12 (replacement for R12 here)
-	RSB R10, R12, #SECTION_MAX // store avail (R10) = section_max - parking[floor][sect]
+	LDR R6, [R3, R5, LSL #2]		// load result[k]
+	LDR R9, #SECTION_MAX			// load SECTION_MAX
+	SUB R9, R9, R6					// current section capacity = SECTION_MAX - result[k]
 
-	CMP R10, #0			// compare avail with 0
-	BGT AVAIL_POS		// if avail >0, branch to AVAIL_POS
-	B FLOOR_FULL		// branch back to floor_full
+	// Current section is full; move to next
+	CMP R9, #0 						// current section capacity <= 0
+	BLE NEXT_SECTION
 
+	// All incoming cars fit in the current section
+	CMP R8, R9 						// cars <= current section capacity
+	BLE FILL_SECTION
 
-AVAIL_POS:
-	CMP R9, R10			// compare cars and available
-	BLE MORE_AVAIL		// if cars <= available,
-	@ for the else cond
-	LDR R12, =SECTION_MAX // set parking[floor][sect] to section_max
-	STR R12, [R11]		// store R12 val (parking[floor][sect]) into parking array
-	SUB R9, R9, R10		// cars -= available
-	B FLOOR_FULL		// branch to floor_full
+	// Fill the current section completely and move to the next
+	SUB R8, R8, R9					// cars -= (SECTION_MAX - result[k])
+	MOV R6, #SECTION_MAX
+	STR R6, [R3, R5, LSL #2]		// result[k] = SECTION_MAX;
 
-FLOOR_FULL:
-	ADD R8, R8, #1		// sec++
-	POP {R11}			// pop S back to R11
-	CMP R8, R11			// compare sect to S
-	PUSH {R11}			// push S back to the stack
-	B	SECT_NOT_FULL	// if sect < S, sect is not full
-	MOV	R8, #0			// set sect = 0
-	ADD R7, R7, #1		// increment floor
-	B WHILE_LOOP		// branch back to while loop
+NEXT_SECTION:
+	ADD R5, R5, #1					// k++
+	B ENTRY_WHILE_LOOP				// next iteration of while loop
 
-MORE_AVAIL:
-	ADD R12, R12, R9	// parking[floor][sect] += cars;
-	STR R12, [R11]		// store R12 val (parking[floor][sect]) into parking array
-	MOV R9, #0			// cars = 0
+FILL_SECTION:
+	ADD R6, R6, R8
+	STR R6, [R3, R5, LSL #2]		// result[k] += cars
+	MOV R8, #0						// cars = 0
+	B ENTRY_WHILE_LOOP				// next iteration of while loop
 
-	B WHILE_LOOP		// branch back to while loop
+ENTRY_WHILE_LOOP_DONE:
+	ADD R0, R0, #1					// j++
+	B FIRST_FOR_LOOP				// next entry event
 
-SECT_NOT_FULL:
-	B WHILE_LOOP		// revert back to the main while loop
+ENTRY_FOR_LOOP_DONE:
+	MOV R0, #0
 
-WHILE_LOOP_EXIT:
-	ADD R5, R5, #1		// i++
-	B FIRST_FOR_LOOP
+EXIT_FOR_LOOP:
+	CMP R0, R4						// compare l with F*S
+	BGE EXIT_FOR_LOOP_DONE			// exit if l >= F*S
 
-FIRST_LOOP_EXIT:
+	LDR     R9, [R3, R0, LSL #2]   	// load current result[l]
+    LDR     R6, [R2, R0, LSL #2]   	// load exit[l]
+    SUB     R9, R9, R6           	// compute remaining = result - exit
+
+    CMP     R9, #0
+    BGE     EXIT_STORE_BRANCH		// if remaining >= 0, store result
+    MOV     R9, #0               	// if negative, set to 0
+
+EXIT_STORE_BRANCH:
+    STR     R9, [R3, R0, LSL #2]   	// store updated result
+    ADD     R0, R0, #1
+    B       EXIT_FOR_LOOP
+
+EXIT_FOR_LOOP_DONE:
+	POP {LR}
 	BX LR
 
 // 	PUSH {R14} // saves caller's link register

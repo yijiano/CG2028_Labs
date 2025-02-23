@@ -9,11 +9,13 @@ S_SRCS += \
 
 C_SRCS += \
 ../Src/main.c \
+../Src/reference_2.c \
 ../Src/sysmem.c 
 
 OBJS += \
 ./Src/asm_func.o \
 ./Src/main.o \
+./Src/reference_2.o \
 ./Src/sysmem.o 
 
 S_DEPS += \
@@ -21,6 +23,7 @@ S_DEPS += \
 
 C_DEPS += \
 ./Src/main.d \
+./Src/reference_2.d \
 ./Src/sysmem.d 
 
 
@@ -33,7 +36,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/asm_func.d ./Src/asm_func.o ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+	-$(RM) ./Src/asm_func.d ./Src/asm_func.o ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/reference_2.cyclo ./Src/reference_2.d ./Src/reference_2.o ./Src/reference_2.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 
 .PHONY: clean-Src
 

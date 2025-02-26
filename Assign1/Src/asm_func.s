@@ -59,7 +59,7 @@ asm_func:
 	LDR R8, [R3, #4]				@ Load S, which is second index of result array
 	MUL R4, R6, R8					@ Multiply to get # of elements in the array (F*S)
 
-	MOV R5, #0              		@ Init # of cars to be added to carpark = 0
+	MOV R5, #0						@ Init # of cars to be added to carpark = 0
 	MOV R11, #NUM_ENTRY_EVENTS		@ Init # of entry events
 
 SUM_ENTRY_CARS_FOR_LOOP:

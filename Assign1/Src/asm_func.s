@@ -22,15 +22,16 @@
 
 @ Look-up table for registers:
 
-@ R0 ptr to first element in 2D array for building slots / entry event index j / exit event index l
+@ R0 ptr to first element in 2D array for building slots
 @ R1 ptr to array for entry events
 @ R2 ptr to array for exit events
 @ R3 ptr 2D array for results
 @ R4 # of elements (F*S)
-@ R5 copy loop index i / section index k
+@ R5 # of cars to be added to carpark
 @ R6 flexi-register
-@ R8 # of cars in entry[section] during EXIT_FOR_LOOP
-@ R9 current section capacity / remaining cars during exit event
+@ R8 flexi-register
+@ R9 SECTION_MAX
+@ R11 general counter
 @ R13 stack pointer (SP)
 @ R14 link register (LR)
 @ ...
@@ -41,94 +42,64 @@
 
 .equ SECTION_MAX, 12
 @ return value from asm back to C program, R0 register is used
+
+/*
+	Overview:
+	1. Calculate F * S
+	2. Sum the total # of cars to be parked
+	3. Iterate through building array (one pass):
+		3a. Fill cars in current section based on total # of cars to be parked
+		3b. Before moving to next iteration, subtract the number of cars to exit
+	4. Return
+*/
+
 asm_func:
 	PUSH {LR}
+	LDR R6, [R3]					@ Load F, which is first index of result array
+	LDR R8, [R3, #4]				@ Load S, which is second index of result array
+	MUL R4, R6, R8					@ Multiply to get # of elements in the array (F*S)
 
-	@ Calculate F*S
-	LDR R4, [R3]					@ Load value of result[0][0], which is F
-	LDR R5, [R3, #4]				@ Load value of result[0][1], which is S
-	MUL R4, R4, R5					@ Multiply to get # of elements in the array (F*S)
-	MOV	R5, #0						@ R5 serving as copy loop counter i, init to 0
+	MOV R11, #0              		@ Init R11 to entry event index (0 to 4)
+	MOV R5, #0              		@ Init # of cars to be added to carpark = 0
 
-@ Copy the building array to results array (initial state of building)
-COPY_LOOP:
-	CMP R5, R4
-    BGE COPY_LOOP_DONE
-    LDR R6, [R0, R5, LSL #2]   		@ load building[i] using building pointer in R0
-    STR R6, [R3, R5, LSL #2]   		@ store it to result[i]
-    ADD R5, R5, #1
-    B COPY_LOOP
+SUM_ENTRY_CARS_FOR_LOOP:
+	CMP R11, #5
+	BGE BEFORE_PROCESS_BUILDING		@ If entry event index >= 5, exit this for loop
 
-COPY_LOOP_DONE:
-    MOV R0, #0              		@ repurpose R0 to entry event index (0 to 4)
-    MOV R5, #0              		@ repurpose R5 to section index (for result array)
+	LDR	R6, [R1, R11, LSL #2]		@ Load entry[i]
+	ADD R5, R5, R6					@ # of cars to be added to carpark += entry[i]
+	ADD R11, R11, #1				@ i++
+	B SUM_ENTRY_CARS_FOR_LOOP
 
-@ Process each entry index
-ENTRY_FOR_LOOP:
-	CMP R0, #5						@ compare j with 5
-	BGE ENTRY_FOR_LOOP_DONE			@ if i>=5, exit loop
+BEFORE_PROCESS_BUILDING:
+	MOV R11, #0              		@ Repurpose R11 to building section index (0 to F*S-1)
 
-	LDR	R8, [R1, R0, LSL #2] 		@ cars = entry[j]
+PROCESS_BUILDING_LOOP:
+	CMP R11, R4
+	BGE EXIT_ASM_FUNC 				@ If section index >= F*S, exit this for loop
 
-@ Check each section to accomodate new cars from current entry index
-ENTRY_WHILE_LOOP:
-	@ check (cars && j < F*S) condition
-	CMP R8, #0
-	BEQ ENTRY_WHILE_LOOP_DONE		@ if cars == 0 then exit
-	CMP R5, R4
-	BGE ENTRY_WHILE_LOOP_DONE		@ if k >= F*S then exit
+	LDR R6, [R0, R11, LSL #2]		@ Load building[i]
+	MOV R9, SECTION_MAX
+	SUB R8, R9, R6					@ Calculate # of free lots (SECTION_MAX - building[i])
 
-	LDR R6, [R3, R5, LSL #2]		@ load result[k]
-	MOV R9, #SECTION_MAX			@ load SECTION_MAX
-	SUB R9, R9, R6					@ current section capacity = SECTION_MAX - result[k]
+	CMP R5, #0
+	BLE PROCESS_EXIT_EVENTS			@ if there are no cars left to be added, skip the adding routine
 
-	@ Current section is full; move to next
-	CMP R9, #0 						@ current section capacity <= 0
-	BLE NEXT_SECTION
+	@ Add Car Routine
+	CMP R8, R5
+	ITE GE
+	ADDGE R6, R6, R5				@ Section capacity >= cars, add remaining cars to be parked into current section
+	MOVLT R6, R9					@ Section capacity < cars, fill all lots in current section
 
-	@ All incoming cars fit in the current section
-	CMP R8, R9 						@ cars <= current section capacity
-	BLE FILL_SECTION
+PROCESS_EXIT_EVENTS:
+	SUB R5, R5, R8					@ Subtract cars parked. For last section, the result will be <= 0
+	LDR R8, [R2, R11, LSL #2]		@ load exit[i]
+	SUB R6, R6, R8					@ Calc cars left after exit event
+	STR R6, [R3, R11, LSL #2]		@ Store result[i]
 
-	@ Fill the current section completely and move to the next
-	SUB R8, R8, R9					@ cars -= (SECTION_MAX - result[k])
-	MOV R6, #SECTION_MAX
-	STR R6, [R3, R5, LSL #2]		@ result[k] = SECTION_MAX;
+	ADD R11, R11 ,#1				@ i++
+	B PROCESS_BUILDING_LOOP
 
-NEXT_SECTION:
-	ADD R5, R5, #1					@ k++
-	B ENTRY_WHILE_LOOP				@ next iteration of while loop
-
-FILL_SECTION:
-	ADD R6, R6, R8
-	STR R6, [R3, R5, LSL #2]		@ result[k] += cars
-	MOV R8, #0						@ cars = 0
-	B ENTRY_WHILE_LOOP				@ next iteration of while loop
-
-ENTRY_WHILE_LOOP_DONE:
-	ADD R0, R0, #1					@ j++
-	B ENTRY_FOR_LOOP				@ next entry event
-
-ENTRY_FOR_LOOP_DONE:
-	MOV R0, #0
-
-EXIT_FOR_LOOP:
-	CMP R0, R4						@ compare l with F*S
-	BGE EXIT_FOR_LOOP_DONE			@ exit if l >= F*S
-
-	LDR     R9, [R3, R0, LSL #2]   	@ load current result[l]
-    LDR     R6, [R2, R0, LSL #2]   	@ load exit[l]
-    SUB     R9, R9, R6           	@ compute remaining = result - exit
-
-    CMP     R9, #0
-    BGE     EXIT_STORE_BRANCH		@ if remaining >= 0, store result
-    MOV     R9, #0               	@ if negative, set to 0
-
-EXIT_STORE_BRANCH:
-    STR     R9, [R3, R0, LSL #2]   	@ store updated result
-    ADD     R0, R0, #1
-    B       EXIT_FOR_LOOP
-
-EXIT_FOR_LOOP_DONE:
+EXIT_ASM_FUNC:
 	POP {LR}
 	BX LR

@@ -27,10 +27,29 @@
 extern void asm_func(int* arg1, int* arg2, int* arg3, int* arg4);
 extern void initialise_monitor_handles(void);
 
+//****************************************************************************
+
+volatile unsigned int *DWT_CYCCNT   = (volatile unsigned int *)0xE0001004;
+volatile unsigned int *DWT_CONTROL  = (volatile unsigned int *)0xE0001000;
+volatile unsigned int *DWT_LAR      = (volatile unsigned int *)0xE0001FB0;
+volatile unsigned int *SCB_DHCSR    = (volatile unsigned int *)0xE000EDF0;
+volatile unsigned int *SCB_DEMCR    = (volatile unsigned int *)0xE000EDFC;
+volatile unsigned int *ITM_TER      = (volatile unsigned int *)0xE0000E00;
+volatile unsigned int *ITM_TCR      = (volatile unsigned int *)0xE0000E80;
+
+void initialise_timer()
+{
+	*SCB_DEMCR |= 0x01000000;
+	*DWT_LAR = 0xC5ACCE55; // enable access
+	*DWT_CYCCNT = 0; // reset the counter
+	*DWT_CONTROL |= 1 ; // enable the counter
+}
+
 
 
 int main(void)
 {
+	initialise_timer();
 	initialise_monitor_handles();
 
 	int i,j;
@@ -41,7 +60,9 @@ int main(void)
 	int exit[F][S] = {{1,2},{2,3},{3,4}};
 	int result[F][S] = {{F,S},{0,0},{0,0}};
 
+	int start_time = *DWT_CYCCNT;
 	asm_func((int*)building, (int*)entry, (int*)exit, (int*)result);
+	int end_time = *DWT_CYCCNT;
 
 	printf("TEST CASE 1\n");
 	for (i=0; i<F; i++)
@@ -53,6 +74,10 @@ int main(void)
 		}
 	printf("\n");
 	}
+
+	// Prints final cycles taken, the overhead is 8 clock cycles
+	printf("No. of Clock Cycles Taken: %d\n", end_time - start_time);
+	printf("End \n");
 
 //	int building[F][S] = {{1,2},{3,4},{5,6}};
 //	int entry[5] =  {1,1,1,1,1};

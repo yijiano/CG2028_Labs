@@ -30,7 +30,7 @@
 @ R5 # of cars to be added to carpark
 @ R6 flexi-register
 @ R8 flexi-register
-@ R9 SECTION_MAX
+@ R9 flexi-register
 @ R11 general counter
 @ R13 stack pointer (SP)
 @ R14 link register (LR)
@@ -41,6 +41,7 @@
 @ write your program from here:
 
 .equ SECTION_MAX, 12
+.equ NUM_ENTRY_EVENTS, 5
 @ return value from asm back to C program, R0 register is used
 
 /*
@@ -54,34 +55,22 @@
 */
 
 asm_func:
-	PUSH {LR}
 	LDR R6, [R3]					@ Load F, which is first index of result array
 	LDR R8, [R3, #4]				@ Load S, which is second index of result array
 	MUL R4, R6, R8					@ Multiply to get # of elements in the array (F*S)
 
-	MOV R11, #0              		@ Init R11 to entry event index (0 to 4)
 	MOV R5, #0              		@ Init # of cars to be added to carpark = 0
+	MOV R11, #NUM_ENTRY_EVENTS		@ Init # of entry events
 
 SUM_ENTRY_CARS_FOR_LOOP:
-	CMP R11, #5
-	BGE BEFORE_PROCESS_BUILDING		@ If entry event index >= 5, exit this for loop
-
-	LDR	R6, [R1, R11, LSL #2]		@ Load entry[i]
+	LDR	R6, [R1], #4				@ Load entry[i], then incremenet address using post-index
 	ADD R5, R5, R6					@ # of cars to be added to carpark += entry[i]
-	ADD R11, R11, #1				@ i++
-	B SUM_ENTRY_CARS_FOR_LOOP
-
-BEFORE_PROCESS_BUILDING:
-	MOV R11, #0              		@ Repurpose R11 to building section index (0 to F*S-1)
+	SUBS R11, R11, #1				@ Decrement entry event count
+	BNE SUM_ENTRY_CARS_FOR_LOOP		@ remaining entry events >= 0, go to nex iterations
 
 PROCESS_BUILDING_LOOP:
-	CMP R11, R4
-	BGE EXIT_ASM_FUNC 				@ If section index >= F*S, exit this for loop
-
-	LDR R6, [R0, R11, LSL #2]		@ Load building[i]
-	MOV R9, SECTION_MAX
-	SUB R8, R9, R6					@ Calculate # of free lots (SECTION_MAX - building[i])
-
+	LDR R6, [R0], #4				@ Load building[i], then incremenet address using post-index
+	RSB R8, R6, #SECTION_MAX		@ Calculate # of free lots (SECTION_MAX - building[i])
 	CMP R5, #0
 	BLE PROCESS_EXIT_EVENTS			@ if there are no cars left to be added, skip the adding routine
 
@@ -89,17 +78,16 @@ PROCESS_BUILDING_LOOP:
 	CMP R8, R5
 	ITE GE
 	ADDGE R6, R6, R5				@ Section capacity >= cars, add remaining cars to be parked into current section
-	MOVLT R6, R9					@ Section capacity < cars, fill all lots in current section
+	MOVLT R6, #SECTION_MAX			@ Section capacity < cars, fill all lots in current section
 
 PROCESS_EXIT_EVENTS:
 	SUB R5, R5, R8					@ Subtract cars parked. For last section, the result will be <= 0
-	LDR R8, [R2, R11, LSL #2]		@ load exit[i]
+	LDR R8, [R2], #4				@ Load exit[i], then incremenet address using post-index
 	SUB R6, R6, R8					@ Calc cars left after exit event
-	STR R6, [R3, R11, LSL #2]		@ Store result[i]
+	STR R6, [R3], #4				@ Store result[i], then incremenet address using post-index
 
-	ADD R11, R11 ,#1				@ i++
-	B PROCESS_BUILDING_LOOP
+	SUBS R4, R4, #1					@ F*S - 1
+	BNE PROCESS_BUILDING_LOOP		@ if F*S >= 0, go to nex iterations
 
 EXIT_ASM_FUNC:
-	POP {LR}
 	BX LR
